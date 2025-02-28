@@ -3,8 +3,14 @@ from task_manager import TaskManager
 from scope_manager import ScopeManager
 from logger import generate_report
 import sys
+import os
 
 def main():
+    # Ensure logs.txt exists before execution
+    if not os.path.exists("logs.txt"):
+        with open("logs.txt", "w") as f:
+            f.write("Log file created.\n")
+
     # Define target scope
     allowed_scope = ["example.com"]  # Change as needed
     scope_manager = ScopeManager(allowed_scope)
