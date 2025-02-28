@@ -1,8 +1,14 @@
 import datetime
+import os
 
 class Logger:
     def __init__(self, log_file="logs.txt"):
         self.log_file = log_file
+
+        # Ensure the log file exists
+        if not os.path.exists(self.log_file):
+            with open(self.log_file, "w") as f:
+                f.write("Log file created.\n")
 
     def log(self, message):
         """Logs a message with a timestamp."""
