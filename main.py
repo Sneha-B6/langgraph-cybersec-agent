@@ -1,7 +1,7 @@
+import streamlit as st
 from task_manager import TaskManager
 from scope_manager import ScopeManager
 from logger import generate_report
-import streamlit as st
 import sys
 
 def main():
@@ -22,8 +22,16 @@ def main():
     print("\n===== Execution Report =====")
     print(generate_report())
 
+def streamlit_ui():
+    """Streamlit UI for displaying logs."""
+    st.title("Security Scan Dashboard")
+    logs = generate_report()
+    st.subheader("Execution Logs")
+    st.code(logs, language="plaintext")
+    st.download_button("Download Report", logs, file_name="audit_report.txt")
+
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "ui":
-        import ui
+        streamlit_ui()  # Run Streamlit UI
     else:
-        main()
+        main()  # Run security scan execution
