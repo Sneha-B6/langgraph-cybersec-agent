@@ -29,7 +29,7 @@ st.code(logs, language="plaintext")
 
 # Refresh Button
 if st.button("Refresh Logs"):
-    st.experimental_rerun()
+    st.rerun()
 
 # Scan Status
 st.subheader("Scan Status")
