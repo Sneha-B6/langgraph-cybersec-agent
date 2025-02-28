@@ -1,14 +1,21 @@
 import streamlit as st
+import os
 
 def load_logs():
-    """Loads execution logs from logs.txt"""
-    try:
-        with open("logs.txt", "r") as f:
-            return f.read()
-    except FileNotFoundError:
-        return "No logs available."
+    """Loads execution logs from logs.txt, ensuring it exists first."""
+    log_file = "logs.txt"
 
-# Streamlit UI
+    # Ensure the log file exists
+    if not os.path.exists(log_file):
+        with open(log_file, "w") as f:
+            f.write("Log file created.\n")
+
+    # Read log file
+    with open(log_file, "r") as f:
+        content = f.read().strip()
+        return content if content else "No logs recorded yet."
+
+# Streamlit UI Configuration
 st.set_page_config(page_title="Security Scan Dashboard", layout="wide")
 
 st.title("Security Scan Dashboard")
@@ -22,7 +29,7 @@ st.code(logs, language="plaintext")
 
 # Refresh Button
 if st.button("Refresh Logs"):
-    st.rerun()  # Fixed the deprecated function
+    st.experimental_rerun()
 
 # Scan Status
 st.subheader("Scan Status")
