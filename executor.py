@@ -34,4 +34,4 @@ def run_ffuf(target):
         return result.stdout
     except Exception as e:
         logger.log(f"FFUF failed: {e}")
-        return None
+        return None 
