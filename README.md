@@ -8,8 +8,6 @@ This project implements a **LangGraph-based security pipeline** that:
 - Logs execution steps and generates **audit reports**.
 - Provides a **Streamlit UI** for monitoring execution.
 
----
-
 ## System Architecture
 The system consists of **modular components** for structured execution:
 
